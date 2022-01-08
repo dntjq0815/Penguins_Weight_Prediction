@@ -66,3 +66,13 @@ train_missing_col = check_missing_col(train_preprocessed)
 결측치가 존재하지 않습니다.
 ```
 No more missing columns in train data.
+<br/>
+Same thing for the test data as well.
+```python
+test_missing_col = check_missing_col(test_data)
+
+test_data['Sex'] = test_data['Sex'].fillna("MALE")
+test_preprocessed = test_data.fillna(0)
+
+test_missing_col = check_missing_col(test_preprocessed)
+```
