@@ -34,3 +34,35 @@ def check_missing_col(dataframe):
         print('결측치가 존재하지 않습니다.')
     return missing_col
 ```
+<br/>
+
+**Check missing columns from the train data**
+```python
+train_missing_col = check_missing_col(train_data)
+```
+```
+결측치가 있는 칼럼은: Sex입니다
+해당 칼럼에 총 3개의 결측치가 존재합니다
+결측치가 있는 칼럼은: Delta 15 N (o/oo)입니다
+해당 칼럼에 총 3개의 결측치가 존재합니다
+결측치가 있는 칼럼은: Delta 13 C (o/oo)입니다
+해당 칼럼에 총 3개의 결측치가 존재합니다
+```
+<br/>
+
+**Preprocessing**
+```python
+train_preprocessed = train_data.dropna(subset=['Sex'])
+train_preprocessed = train_preprocessed.fillna(0)
+```
+If missing column is 'Sex', just deleted it. Column 'Delta 13 C' or 'Delta 15 N' is filled with integer 0.
+<br/><br/>
+
+**Check the preprocessed train data**
+```python
+train_missing_col = check_missing_col(train_preprocessed)
+```
+```
+결측치가 존재하지 않습니다.
+```
+No more missing columns in train data.
