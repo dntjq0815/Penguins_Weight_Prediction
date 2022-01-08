@@ -76,3 +76,27 @@ test_preprocessed = test_data.fillna(0)
 
 test_missing_col = check_missing_col(test_preprocessed)
 ```
+<br/>
+
+**Label Encoding**
+```python
+def make_label_map(dataframe):
+    label_maps = {}
+    for col in dataframe.columns:
+        if dataframe[col].dtype == 'object':
+            label_map = {'unknown':0}
+            for i, key in enumerate(train_data[col].unique()):
+                label_map[key] = i + 1
+            label_maps[col] = label_map
+    return label_maps
+
+def label_encoder(dataframe, label_map):
+    for col in dataframe.columns:
+        if dataframe[col].dtype == 'object':
+            dataframe[col] = dataframe[col].map(label_map[col])
+            dataframe[col] = dataframe[col].fillna(label_map[col]['unknown'])
+    return dataframe
+
+label_map = make_label_map(train_preprocessed)
+labeled_train = label_encoder(train_preprocessed, label_map)
+```
