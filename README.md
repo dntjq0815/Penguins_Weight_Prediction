@@ -100,3 +100,14 @@ def label_encoder(dataframe, label_map):
 label_map = make_label_map(train_preprocessed)
 labeled_train = label_encoder(train_preprocessed, label_map)
 ```
+Changing 'object' variables to 'int'. Here's the result.
+<br/>
+```python
+{'Species': {'unknown': 0, 
+'Gentoo penguin (Pygoscelis papua)': 1, 
+'Chinstrap penguin (Pygoscelis antarctica)': 2, 
+'Adelie Penguin (Pygoscelis adeliae)': 3}, 
+'Island': {'unknown': 0, 'Biscoe': 1, 'Dream': 2, 'Torgersen': 3}, 
+'Clutch Completion': {'unknown': 0, 'Yes': 1, 'No': 2}, 
+'Sex': {'unknown': 0, 'MALE': 1, 'FEMALE': 2, nan: 3}}
+```
